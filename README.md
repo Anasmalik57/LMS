@@ -41,18 +41,29 @@ npm install -D tailwindcss postcss autoprefixer
 ```
 npx tailwindcss init -p
 ```
+
 3. Add file extensions in your tailwind.config.js file
 
 ```
 content: ["./src/**/*.{html,js}"],
 ```
+
 4. Add the @tailwind directives for each of Tailwind’s layers to your ./src/index.css file
+
 ```
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
+
 5. Start the server
+
 ```
 npm run dev
+```
+
+# Adding plugins and dependencies
+
+```
+npm i @reduxjs/toolkit react-redux react-router-dom react-icons react-chartjs-2 chart.js daisyui axios react-hot-toast @tailwindcss/line-clamp
 ```
