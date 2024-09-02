@@ -56,10 +56,11 @@ content: ["./src/**/*.{html,js}"],
 @tailwind utilities;
 ```
 
-5. Start the server
+5. Add the following details in plugin property in `tailwind.config.js`
 
 ```
-npm run dev
+require('daisyui'),
+require("@tailwindcss/line-clamp"),
 ```
 
 ### Adding plugins and dependencies
