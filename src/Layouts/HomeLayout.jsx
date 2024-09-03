@@ -52,7 +52,7 @@ function HomeLayout({ children }) {
         {/* DrawerSide */}
         <div className="drawer-side w-0">
           <label htmlFor="my-drawer" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-48 sm:w-80 bg-base-200 text-base-content relative">
+          <ul className="menu p-4 w-48 h-full sm:w-80 bg-base-200 text-base-content relative">
             <li className="w-fit absolute right-2 z-50">
               <button onClick={hideDrawer}>
                 <AiFillCloseCircle size={"24px"} />
@@ -77,12 +77,12 @@ function HomeLayout({ children }) {
               <Link to={"/about"}>About Us</Link>
             </li>
             {!isLoggedIn && (
-              <li>
+              <li className="absolute w-[90%] bottom-4" >
                 <div className="w-full flex items-center justify-center box-border space-x-2">
-                  <button className=" bg-blue-600 px-4 py-2 w-full rounded-md text-gray-200 font-semibold  ">
+                  <button className=" bg-blue-600 hover:bg-blue-700 outline-none px-4 py-2 w-full rounded-md text-gray-200 font-semibold  ">
                     <Link to={"/login"}>Login</Link>
                   </button>
-                  <button className=" bg-violet-600 px-4 py-2 w-full rounded-md text-gray-200 font-semibold ">
+                  <button className=" bg-violet-600 hover:bg-violet-700 outline-none px-4 py-2 w-full rounded-md text-gray-200 font-semibold ">
                     <Link to={"/signup"}>SignUp</Link>
                   </button>
                 </div>
@@ -90,7 +90,7 @@ function HomeLayout({ children }) {
             )}
             {/* ................ */}
             {isLoggedIn && (
-              <li>
+              <li className="absolute w-[90%] bottom-4" >
                 <div className="w-full flex items-center justify-center box-border space-x-2">
                   <button className=" bg-blue-600 px-4 py-2 w-full rounded-md text-gray-200 font-semibold  ">
                     <Link to={"/user/profile"}>Profile</Link>
