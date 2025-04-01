@@ -22,16 +22,16 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center">
         <ul className="flex space-x-8">
-          <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+          <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
             Home
           </li>
-          <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+          <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
             About
           </li>
-          <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+          <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
             Services
           </li>
-          <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+          <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
             Contact
           </li>
         </ul>
@@ -53,16 +53,16 @@ const Navbar = () => {
       {isOpen && (
         <div className="absolute top-16 left-0 right-0 bg-gradient-to-br from-slate-950/95 to-slate-900/95 backdrop-blur-lg shadow-lg lg:hidden animate-slide-down">
           <ul className="flex flex-col items-center space-y-6 py-6">
-            <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+            <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
               Home
             </li>
-            <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+            <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
               About
             </li>
-            <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+            <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
               Services
             </li>
-            <li className="text-gray-200 hover:text-blue-400 transition-colors duration-300 cursor-pointer font-medium">
+            <li className="text-gray-200 hover:text-blue-500 hover:tracking-widest transition-all duration-300 cursor-pointer font-medium">
               Contact
             </li>
             <li>
