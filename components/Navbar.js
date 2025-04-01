@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa"; // Hamburger aur close icons ke liye
 
@@ -10,12 +11,12 @@ const Navbar = () => {
   };
 
   return (
-    <header className="container mx-auto px-12 py-4 flex justify-between items-center text-lg tracking-wider sticky top-0 left-0 z-20 shadow-lg bg-slate-950/50 backdrop-blur-md-125">
+    <header className="w-full px-12 py-4 flex justify-between items-center text-lg tracking-wider sticky top-0 left-0 z-20 shadow-lg bg-slate-950/50 backdrop-blur-md-125">
       {/* Logo */}
       <div className="text-xl font-bold text-white">
-        <span className="text-2xl">
+        <Link href={"/"} className="text-2xl">
           Logo
-        </span>
+        </Link>
       </div>
 
       {/* Desktop Navigation */}
