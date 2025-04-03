@@ -13,8 +13,8 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    { name: "Courses", path: "/courses" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -57,7 +57,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="w-full px-12 py-4 flex justify-between items-center text-lg tracking-wider sticky top-0 left-0 z-20 shadow-lg bg-slate-950/50 backdrop-blur-md-125">
+    <header className="w-full px-12 py-4 flex justify-between items-center text-lg tracking-wider  z-20 shadow-lg bg-slate-950/50 backdrop-blur-md-125">
       {/* Logo */}
       <motion.div
         initial={{ opacity: 0 }}
