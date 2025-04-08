@@ -4,13 +4,13 @@ import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSession, signIn, signOut } from "next-auth/react";
 import {
-  FaBook,
   FaHeadphones,
   FaUser,
   FaBriefcase,
   FaShoppingCart,
   FaSignOutAlt,
 } from "react-icons/fa";
+import { RiDashboardFill } from "react-icons/ri";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +20,15 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-  let email = session.user.email.split("@")[0];
 
   return (
     <header className="relative w-full px-6 sm:px-8 lg:px-12 py-5 flex justify-between items-center text-lg tracking-wider z-20 shadow-md bg-slate-950/80 backdrop-blur-md">
       {/* Logo */}
       <div className="text-2xl font-bold text-white">
-        <Link href="/" className="hover:text-blue-400">
+        <Link
+          href="/"
+          className="hover:text-blue-500 transition-all duration-75 ease-in "
+        >
           Logo
         </Link>
       </div>
@@ -37,7 +39,7 @@ const Navbar = () => {
           <li>
             <Link
               href="/"
-              className="text-gray-200 hover:text-blue-400 font-medium text-base"
+              className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
             >
               Home
             </Link>
@@ -45,7 +47,7 @@ const Navbar = () => {
           <li>
             <Link
               href="/courses"
-              className="text-gray-200 hover:text-blue-400 font-medium text-base"
+              className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
             >
               Courses
             </Link>
@@ -53,7 +55,7 @@ const Navbar = () => {
           <li>
             <Link
               href="/about"
-              className="text-gray-200 hover:text-blue-400 font-medium text-base"
+              className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
             >
               About
             </Link>
@@ -61,7 +63,7 @@ const Navbar = () => {
           <li>
             <Link
               href="/contact"
-              className="text-gray-200 hover:text-blue-400 font-medium text-base"
+              className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
             >
               Contact
             </Link>
@@ -73,7 +75,7 @@ const Navbar = () => {
       <div className="hidden lg:flex justify-center items-center gap-1">
         {!session ? (
           <button className="border-2 border-t-blue-500 border-l-blue-500 border-r-violet-500 border-b-violet-500 rounded-xl px-4 py-2 text-sm text-white font-semibold hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 shadow-md">
-            <Link href="/login" onClick={() => signIn()}>
+            <Link href="/login" onClick={toggleMenu}>
               Login / SignUp
             </Link>
           </button>
@@ -82,9 +84,10 @@ const Navbar = () => {
             <button
               className="border-2 size-10 rounded-full cursor-pointer overflow-hidden text-sm  border-current *:selection:bg-transparent"
               onClick={() => setShowDropdown(!showDropdown)}
+              onBlur={() => setTimeout(() => setShowDropdown(false), 300)}
             >
               <img
-                src={session?.user?.image || "./avatar.gif"}
+                src={session?.user?.image || "./avatar.png"}
                 alt={session?.user?.name?.split(" ")[0].toLowerCase() || "user"}
                 className="w-full h-full object-cover"
               />
@@ -104,12 +107,12 @@ const Navbar = () => {
                 </li>
                 <hr className=" text-gray-700/50 py-[1px]" />
                 <Link
-                  href={`${email}/my-courses`}
+                  href={`${session?.user.email.split("@")[0]}/dashboard`}
                   className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg"
                   onClick={() => setShowDropdown(false)}
                 >
-                  <FaBook className="text-gray-300" />
-                  <span className="text-sm">My Courses</span>
+                  <RiDashboardFill className="text-gray-300" />
+                  <span className="text-sm">Dashboard</span>
                 </Link>
                 <Link
                   href={"/contact"}
@@ -120,7 +123,7 @@ const Navbar = () => {
                   <span className="text-sm">Support</span>
                 </Link>
                 <Link
-                  href={`${email}/my-profile`}
+                  href={`${session?.user.email.split("@")[0]}/my-profile`}
                   className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg"
                   onClick={() => setShowDropdown(false)}
                 >
@@ -129,7 +132,7 @@ const Navbar = () => {
                 </Link>
 
                 <Link
-                  href={`${email}/my-purchases`}
+                  href={`${session?.user.email.split("@")[0]}/my-purchases`}
                   className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg"
                   onClick={() => setShowDropdown(false)}
                 >
@@ -154,20 +157,22 @@ const Navbar = () => {
 
       {/* Hamburger Icon (Mobile) */}
       <div className="lg:hidden">
-        <button onClick={toggleMenu} className="text-white focus:outline-none cursor-pointer">
-  {isOpen ? (
-    <FaTimes
-      size={24}
-      className="transition-all duration-200 ease-in hover:rotate-[12deg] active:rotate-0"
-    />
-  ) : (
-    <FaBars
-      size={24}
-      className="transition-all duration-200 ease-in hover:rotate-[12deg] active:rotate-0"
-    />
-  )}
-</button>
-
+        <button
+          onClick={toggleMenu}
+          className="text-white focus:outline-none cursor-pointer"
+        >
+          {isOpen ? (
+            <FaTimes
+              size={24}
+              className="transition-all duration-200 ease-in hover:rotate-[12deg] active:rotate-0"
+            />
+          ) : (
+            <FaBars
+              size={24}
+              className="transition-all duration-200 ease-in hover:rotate-[12deg] active:rotate-0"
+            />
+          )}
+        </button>
       </div>
 
       {/* Mobile Menu */}
@@ -178,7 +183,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-200 hover:text-blue-400 font-medium text-base"
+                  className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
                   onClick={toggleMenu}
                 >
                   Home
@@ -187,7 +192,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/courses"
-                  className="text-gray-200 hover:text-blue-400 font-medium text-base"
+                  className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
                   onClick={toggleMenu}
                 >
                   Courses
@@ -196,7 +201,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/about"
-                  className="text-gray-200 hover:text-blue-400 font-medium text-base"
+                  className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
                   onClick={toggleMenu}
                 >
                   About
@@ -205,7 +210,7 @@ const Navbar = () => {
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-200 hover:text-blue-400 font-medium text-base"
+                  className="text-gray-200 hover:text-blue-500 transition-all duration-75 ease-in  font-medium text-base"
                   onClick={toggleMenu}
                 >
                   Contact
@@ -227,23 +232,31 @@ const Navbar = () => {
                 </span>
               </li>
               <Link
-                  href={`${email}/my-courses`} className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center">
-                <FaBook className="text-gray-300" />
-                <span className="text-sm">My Courses</span>
+                href={`${session?.user.email.split("@")[0]}/dashboard`}
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center"
+              >
+                <RiDashboardFill className="text-gray-300" />
+                <span className="text-sm">Dashboard</span>
               </Link>
               <Link
-                  href={"/contact"} className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center">
+                href={"/contact"}
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center"
+              >
                 <FaHeadphones className="text-gray-300" />
                 <span className="text-sm">Support</span>
               </Link>
               <Link
-                  href={`${email}/my-profile`} className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center">
+                href={`${session?.user.email.split("@")[0]}/my-profile`}
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center"
+              >
                 <FaUser className="text-gray-300" />
                 <span className="text-sm">My Profile</span>
               </Link>
-              
+
               <Link
-                  href={`${email}/my-purchases`} className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center">
+                href={`${session?.user.email.split("@")[0]}/my-purchases`}
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-700/50 rounded-lg w-full text-center"
+              >
                 <FaShoppingCart className="text-gray-300" />
                 <span className="text-sm">My Purchases</span>
               </Link>

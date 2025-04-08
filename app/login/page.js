@@ -1,10 +1,19 @@
 "use client";
 import React, { useEffect } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 // import { useRouter } from "next/navigation";
 
 const LoginPage = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    document.title = "Login - Get Me A Chai";
+    if (session) {
+      router.push("/");
+    }
+  }, [session, router]);
 
   return (
     <div className=" w-full flex  items-center  min-h-[90vh] mt-16 flex-col gap-8">
